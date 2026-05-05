@@ -1,3 +1,4 @@
+import React from "react";
 export default function StatusBar({ tasks }) {
   const counts = {
     todo: tasks.filter((t) => t.status === "todo").length,
