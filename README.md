@@ -1,16 +1,56 @@
-# React + Vite
+# SprintBoard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight Kanban task manager built with React.js, developed across two simulated Agile sprints.
 
-Currently, two official plugins are available:
+## Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev       # Development server → http://localhost:5173
+npm test          # Run all unit tests
+npm run build     # Production build
+```
 
-## React Compiler
+## Project Structure
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+src/
+├── components/
+│   ├── Header.jsx        # App title + health indicator
+│   ├── Column.jsx        # Kanban column container
+│   ├── TaskCard.jsx      # Individual task card with move/delete
+│   ├── AddTaskForm.jsx   # Inline form for adding tasks
+│   ├── SearchBar.jsx     # Real-time keyword filter (Sprint 2)
+│   └── StatusBar.jsx     # Live task counts per column (Sprint 2)
+├── tests/
+│   └── App.test.jsx      # All unit & integration tests
+├── App.jsx               # Root component + state management
+├── App.css               # Global styles
+└── main.jsx              # React entry point
+docs/
+├── backlog.md            # Product backlog, sprints, DoD
+├── sprint1-review.md     # Sprint 1 demo write-up
+├── sprint1-retro.md      # Sprint 1 retrospective
+├── sprint2-review.md     # Sprint 2 demo write-up
+└── sprint2-retro.md      # Final retrospective
+.github/
+└── workflows/
+    └── main.yml          # GitHub Actions CI/CD pipeline
+```
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **Kanban Board** — Three columns: To Do, In Progress, Done
+- **Add Tasks** — Inline form per column with title + description
+- **Move Tasks** — Forward/back buttons on each card
+- **Delete Tasks** — One-click removal with visual confirmation
+- **Search/Filter** — Real-time keyword filtering across all columns
+- **Status Bar** — Live task count per column
+- **Monitoring** — Structured console logging on every state change
+
+## CI/CD
+
+GitHub Actions pipeline (`.github/workflows/main.yml`):
+
+1. **Unit Tests** — runs `vitest` on every push and PR
+2. **Production Build** — runs `vite build` only after tests pass
